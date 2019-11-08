@@ -9,8 +9,8 @@ import (
 )
 
 const (
-	appid             = "wxff26f000ea89ecd8"
-	secret            = "4a25f27f009a4b2e03d3d9c2bcf50298"
+	appid             = "appid"
+	secret            = "secret"
 	base_url          = "https://api.weixin.qq.com/"
 	get_access_token  = base_url + "sns/oauth2/access_token"
 	get_user_info     = base_url + "sns/userinfo"
