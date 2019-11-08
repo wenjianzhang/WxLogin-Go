@@ -34,6 +34,8 @@ https://open.weixin.qq.com/connect/qrconnect?appid=appid&redirect_uri=redirect_u
 
 其次，就可以使用本项目实现的三个接口；
 
+> 获取用户access_token
+
 ```go
 func TestGetAccessToken(t *testing.T) {
 	if ref, err := wxlogin.GetAccessToken("code"); err != nil {
@@ -54,6 +56,8 @@ PASS
 Process finished with exit code 0
 ```
 
+> 刷新access_token
+
 ```go
 func TestGetRefreshToken(t *testing.T) {
 	if ref, err := wxlogin.GetRefreshToken("RefreshToken"); err != nil {
@@ -73,6 +77,8 @@ PASS
 
 Process finished with exit code 0
 ```
+
+> 获取用户信息
 ```go
 func TestGetUserInfo(t *testing.T) {
 	if ref, err := wxlogin.GetUserInfo("access_token", "openid"); err != nil {
@@ -82,7 +88,7 @@ func TestGetUserInfo(t *testing.T) {
 	}
 }
 ```
-
+输出
 ```shell
 === RUN   TestGetUserInfo
 map[city:xx country:CN headimgurl:xx language:zh_CN nickname:xxx openid:xx privilege:[] province:Henan sex:1 unionid:xx]
