@@ -34,6 +34,65 @@ https://open.weixin.qq.com/connect/qrconnect?appid=appid&redirect_uri=redirect_u
 
 其次，就可以使用本项目实现的三个接口；
 
+```go
+func TestGetAccessToken(t *testing.T) {
+	if ref, err := wxlogin.GetAccessToken("code"); err != nil {
+		t.Error(err)
+	} else {
+		t.Log(ref)
+	}
+}
+```
+输出
+```shell
+=== RUN   TestGetAccessToken
+map[access_token:xx expires_in:7200 openid:xx refresh_token:xx scope:snsapi_login unionid:xx]
+--- PASS: TestGetAccessToken (0.36s)
+    wxlogin_test.go:14: map[access_token:xx expires_in:7200 openid:xx refresh_token:xxx scope:snsapi_login unionid:xx]
+PASS
+
+Process finished with exit code 0
+```
+
+```go
+func TestGetRefreshToken(t *testing.T) {
+	if ref, err := wxlogin.GetRefreshToken("RefreshToken"); err != nil {
+		t.Error(err)
+	} else {
+		t.Log(ref)
+	}
+}
+```
+
+```shell
+=== RUN   TestGetRefreshToken
+map[access_token:xxxxx expires_in:7200 openid:xxxx refresh_token:xxxxx scope:snsapi_base,snsapi_login,]
+--- PASS: TestGetRefreshToken (0.28s)
+    wxlogin_test.go:22: map[access_token:xxx expires_in:7200 openid:xx refresh_token:xxx scope:snsapi_base,snsapi_login,]
+PASS
+
+Process finished with exit code 0
+```
+```go
+func TestGetUserInfo(t *testing.T) {
+	if ref, err := wxlogin.GetUserInfo("access_token", "openid"); err != nil {
+		t.Error(err)
+	} else {
+		t.Log(ref)
+	}
+}
+```
+
+```shell
+=== RUN   TestGetUserInfo
+map[city:xx country:CN headimgurl:xx language:zh_CN nickname:xxx openid:xx privilege:[] province:Henan sex:1 unionid:xx]
+--- PASS: TestGetUserInfo (0.31s)
+    wxlogin_test.go:30: map[city:Henan country:CN headimgurl:xxx language:zh_CN nickname:xx openid:xx privilege:[] province:xx sex:1 unionid:xx]
+PASS
+
+Process finished with exit code 0
+```
+
 ## 开箱即用！
 
 在使用中遇到任何问题欢迎留言！
